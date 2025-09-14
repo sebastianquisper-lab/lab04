@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
                         // Aquí irás agregando los 3 componentes poco a poco
                         MyButtonExample()
+                        MyCardExample()
 
                     }
                 }
@@ -52,6 +53,14 @@ fun MyButtonExample() {
     }
 }
 
+// 2. Ejemplo de Card
+@Composable
+fun MyCardExample() {
+    Card(modifier = Modifier.padding(8.dp)) {
+        Text("Soy una Card en Compose", modifier = Modifier.padding(16.dp))
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
@@ -59,6 +68,7 @@ fun GreetingPreview() {
         Column {
             Greeting("Android")
             MyButtonExample()
+            MyCardExample()
 
         }
     }
