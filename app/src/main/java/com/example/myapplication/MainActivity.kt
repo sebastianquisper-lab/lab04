@@ -5,11 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +31,7 @@ class MainActivity : ComponentActivity() {
                         Greeting("Android")
 
                         // Aquí irás agregando los 3 componentes poco a poco
-                        MyButtonExample()
+                        CustomButton {}
                         MyCardExample()
                         MySnackbarExample()
                     }
@@ -47,12 +51,29 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 // 1. Ejemplo de Button
 @Composable
-fun MyButtonExample() {
-    Button(onClick = { }) {
-        Text("Presióname")
+fun CustomButton(onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF3700B3), // morado oscuro
+            contentColor = Color.White
+        ),
+        shape = RoundedCornerShape(16.dp), // bordes redondeados
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 8.dp,
+            pressedElevation = 12.dp
+        )
+    ) {
+        Text(
+            text = "Click Me 🚀",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
-
 // 2. Ejemplo de Card
 @Composable
 fun MyCardExample() {
@@ -85,7 +106,7 @@ fun GreetingPreview() {
     MyApplicationTheme {
         Column {
             Greeting("Android")
-            MyButtonExample()
+            CustomButton {}
             MyCardExample()
             MySnackbarExample()
         }
