@@ -1,0 +1,19 @@
+# Archivos y carpetas de Android Studio
+.idea/
+.gradle/
+local.properties
+
+# Carpetas de compilación
+/build/
+*/build/
+
+# Archivos de log y temporales
+*.log
+*.tmp
+
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de VSCode
+.vscode/
