@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                         // Aquí irás agregando los 3 componentes poco a poco
                         MyButtonExample()
                         MyCardExample()
-
+                        MySnackbarExample()
                     }
                 }
             }
@@ -61,6 +61,24 @@ fun MyCardExample() {
     }
 }
 
+// 3. Ejemplo de Snackbar
+@Composable
+fun MySnackbarExample() {
+    var showSnackbar by remember { mutableStateOf(true) }
+
+    if (showSnackbar) {
+        Snackbar(
+            action = {
+                TextButton(onClick = { showSnackbar = false }) {
+                    Text("OK")
+                }
+            }
+        ) {
+            Text("Soy un Snackbar!")
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
@@ -69,7 +87,7 @@ fun GreetingPreview() {
             Greeting("Android")
             MyButtonExample()
             MyCardExample()
-
+            MySnackbarExample()
         }
     }
 }
